@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.projetotopicos.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,16 +33,17 @@ public class SegurancaServiceImpl implements SegurancaService {
     @Override
     public List<Usuario> todosUsuarios() {
         
-        return null;
+        return usuarioRepo.findAll();
     }
 
     @Override
     public Usuario buscarPorId(Long id) {
-        UsuarioOptinal<Usuario> usuarioOptional = usuarioRepo.findById(id);
+        Optional<Usuario> usuarioOptional = usuarioRepo.findById(id);
         if (usuarioOptional.isPresent()){
             return usuarioOptional.get();
         }
-        throw new RuntimeException(message:"Usuario não encontrado");
+        throw new RuntimeException("Usuario não encontrado");
     }
+    
 
 }

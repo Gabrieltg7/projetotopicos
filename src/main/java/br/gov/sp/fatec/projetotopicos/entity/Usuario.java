@@ -16,12 +16,14 @@ public class Usuario {
 	@Column(name = "usr_id")
 	private Long id;
 
+	@Column(name = "usr_nome")
 	private String nome;
 
+	@Column(name = "usr_senha")
 	private String senha;
 
 	public Long getId() {
-		return id;
+		return id;		
 	}
 
 	public void setId(Long id) {
