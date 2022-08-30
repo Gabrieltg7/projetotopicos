@@ -34,7 +34,7 @@ public class UsuarioController {
     } 
     
     @GetMapping(value = "/{id}")
-    public List<Usuario> buscarPorId(@PathVariable("id") Long id){
-        return segurancaService.buscarPorId(id);
+    public Usuario buscarPorId(@PathVariable("id") Long id) {
+         return segurancaService.buscarPorId(id);
     }
 }

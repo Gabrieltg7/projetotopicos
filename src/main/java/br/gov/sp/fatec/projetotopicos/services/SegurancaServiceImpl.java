@@ -39,10 +39,10 @@ public class SegurancaServiceImpl implements SegurancaService {
     @Override
     public Usuario buscarPorId(Long id) {
         Optional<Usuario> usuarioOptional = usuarioRepo.findById(id);
-        if (usuarioOptional.isPresent()){
+        if(usuarioOptional.isPresent()) {
             return usuarioOptional.get();
         }
-        throw new RuntimeException("Usuario não encontrado");
+        throw new RuntimeException("Usuario nao encontrado!");
     }
     
 

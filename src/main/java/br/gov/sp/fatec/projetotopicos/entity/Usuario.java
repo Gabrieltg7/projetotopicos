@@ -4,7 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import java.util.Set;
+
 import javax.persistence.Column;
 
 @Entity
@@ -21,6 +28,12 @@ public class Usuario {
 
 	@Column(name = "usr_senha")
 	private String senha;
+	
+	@ManyToMany(mappedBy = "autozizacoes")
+	@JoinTable(name = "uau_usuario_autorizacao",
+	joinColumns = { @JoinColumn(name = "usr_id")},
+	inverseJoinColumns = { @JoinColumn(name = "aut_id")} )
+	private Set<Autorizacao> autorizacoes;
 
 	public Long getId() {
 		return id;		
