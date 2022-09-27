@@ -29,8 +29,18 @@ create table uau_usuario_autorizacao (
   foreign key aut_autorizacao_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
 );
 
+create table ant_anotacao (
+  ant_id bigint unsigned not null auto_increment,
+  ant_texto varchar(200) not null,
+  usr_id bigint unsigned not null,
+  primary key (ant_id),
+  foreign key ant_usuario_fk (usr_id) references usr_usuario (usr_id) on delete restrict on update cascade
+);
+
 insert into usr_usuario (usr_nome, usr_senha)
     values ('admin', '$2a$10$i3.Z8Yv1Fwl0I5SNjdCGkOTRGQjGvHjh/gMZhdc3e7LIovAklqM6C');
 insert into aut_autorizacao (aut_nome)
     values ('ROLE_ADMIN');
 insert into uau_usuario_autorizacao values (1, 1);
+insert into ant_anotacao(ant_texto, usr_id) 
+    values ('Teste', 1);
